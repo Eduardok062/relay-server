@@ -26,6 +26,7 @@ wss.on("connection", (ws) => {
   ws.on("pong", () => (ws.isAlive = true));
 
   ws.on("message", (data, isBinary) => {
+    console.log("MSG", ws.role, "room", ws.room, "binary?", isBinary, "len", isBinary ? data.length : data.toString().length);
   // 1) Se for BINÁRIO (ex: JPEG), encaminha direto
   if (isBinary) {
     if (!ws.room || !ws.role) {
