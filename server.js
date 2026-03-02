@@ -20,6 +20,7 @@ const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
   console.log("NEW CONNECTION", new Date().toISOString());
+  ws.send(JSON.stringify({ type: "hello", t: Date.now() }));
 
   ws.isAlive = true;
   ws.role = null;
